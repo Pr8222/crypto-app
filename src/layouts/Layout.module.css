@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3874ff;
+    padding: 10px 20px;
+    margin-bottom: 80px;
+    border-radius: 10px;
+}
+
+
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 80px;
+    margin-bottom: 0;
+    background-color: #3874ff;
+    border-radius: 10px;
+}
