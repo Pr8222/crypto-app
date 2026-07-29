@@ -12,6 +12,7 @@ function Search({ currency, setCurrency }) {
 
   useEffect(() => {
     const controller = new AbortController();
+    setCoins([]);
     if (!query) {
       setIsLoading(false);
       return;
@@ -20,7 +21,6 @@ function Search({ currency, setCurrency }) {
     const search = async () => {
       try {
         setIsLoading(true);
-        setCoins([]);
         const res = await fetch(searchCoin(query), {
           signal: controller.signal,
         });
@@ -54,25 +54,26 @@ function Search({ currency, setCurrency }) {
         <option value="eur">EUR</option>
         <option value="jpy">JPY</option>
       </select>
-      <div className={query && styles.searchResult}>
-        {isLoading && (
-          <RotatingLines
-            
-            width="50px"
-            height="50px"
-            strokeWidth="2"
-            strokeColor="#3874ff"
-          />
-        )}
-        <ul>
-          {coins.map((c) => (
-            <li key={c.id}>
-              <img src={c.thumb} alt={c.name} />
-              <p>{c.name}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {(!!coins.length || isLoading) && (
+        <div className={styles.searchResult}>
+          {isLoading && (
+            <RotatingLines
+              width="50px"
+              height="50px"
+              strokeWidth="2"
+              strokeColor="#3874ff"
+            />
+          )}
+          <ul>
+            {coins.map((c) => (
+              <li key={c.id}>
+                <img src={c.thumb} alt={c.name} />
+                <p>{c.name}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
