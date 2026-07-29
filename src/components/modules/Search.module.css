@@ -50,10 +50,13 @@
     background: transparent;
 }
 
+.searchResult svg {
+    margin: auto;
+}
+
 .searchResult li {
     list-style: none;
     display: flex;
-    flex-direction: row;
     margin-bottom: 15px;
     padding-bottom: 5px;
     border-bottom: 2px solid #22262e;
