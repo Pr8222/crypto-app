@@ -1,6 +1,6 @@
 import styles from "./Chart.module.css";
 
-function Chart({ setChart }) {
+function Chart({ chart, setChart }) {
   const closeHandler = () => {
     setChart(null);
   };
