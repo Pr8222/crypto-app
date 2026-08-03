@@ -15,7 +15,7 @@
     color: #fff;
     width: 30px;
     height: 30px;
-    line-height: 30px;
+    line-height: 1;
     text-align: center;
     justify-self: center;
     margin: 30px 0 0 30px;
@@ -36,4 +36,70 @@
 .graph {
     width: 760px;
     height: 300px;
+}
+
+.name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 10px 30px;
+}
+
+.name img {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.name p {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.types {
+    margin-bottom: 30px;
+}
+
+.types button {
+    margin: 10px 20px;
+    padding: 5px 10px;
+    background-color: #18181cdb;
+    border: 1px solid #3874ff;
+    color: #3874ff;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: all ease-in-out .4s;
+}
+
+.types button:hover {
+    background-color: #3874ff;
+    color: #fff;
+}
+
+.types .selected {
+    background-color: #3874ff;
+    color: #fff;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30px 20px 0;
+}
+
+.details div {
+    display: flex;
+    font-size: 1.1rem;
+}
+
+.details p {
+    margin-right: 7px;
+    color: #3874ff;
+    font-weight: 700;
+}
+
+.details span {
+    color: #fff;
+    font-weight: 400;
 }

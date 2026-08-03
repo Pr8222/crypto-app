@@ -1,5 +1,8 @@
 import styles from "./Chart.module.css";
+
 import { convertData } from "../../helpers/ConvertData";
+import { currencySymbols } from "../../helpers/CurrencySymbols";
+
 import { useState } from "react";
 import {
   LineChart,
@@ -15,8 +18,18 @@ import {
 function Chart({ chart, setChart }) {
   const [type, setType] = useState("prices");
   const data = convertData(chart, type);
+
+  console.log(chart)
+
   const closeHandler = () => {
     setChart(null);
+  };
+
+  const typeHandler = (event) => {
+    if (event.target.tagName === "BUTTON") {
+      const type = event.target.textContent.toLowerCase().replace(" ", "_");
+      setType(type);
+    }
   };
 
   return (
@@ -25,8 +38,38 @@ function Chart({ chart, setChart }) {
         x
       </span>
       <div className={styles.chart}>
+        <div className={styles.name}>
+          <img src={chart.coin.image} alt={chart.coin.name} />
+          <p>{chart.coin.name}</p>
+        </div>
         <div className={styles.graph}>
           <ChartComponent data={data} type={type} />
+        </div>
+        <div className={styles.types} onClick={typeHandler}>
+          <button className={type === "prices" && styles.selected}>Prices</button>
+          <button className={type === "market_caps" && styles.selected}>Market Caps</button>
+          <button className={type === "total_volumes" && styles.selected}>Total Volumes</button>
+        </div>
+        <div className={styles.details}>
+          <div>
+            <p>
+              Prices:{" "}
+              <span>
+                {currencySymbols[chart.currency]}
+                {chart.coin.current_price}
+              </span>
+            </p>
+          </div>
+          <div>
+            <p>
+              ATH: <span>{chart.coin.ath}</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              Market Cap: <span>{chart.coin.market_cap}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
