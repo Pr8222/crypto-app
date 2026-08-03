@@ -19,8 +19,6 @@ function Chart({ chart, setChart }) {
   const [type, setType] = useState("prices");
   const data = convertData(chart, type);
 
-  console.log(chart)
-
   const closeHandler = () => {
     setChart(null);
   };
@@ -46,9 +44,9 @@ function Chart({ chart, setChart }) {
           <ChartComponent data={data} type={type} />
         </div>
         <div className={styles.types} onClick={typeHandler}>
-          <button className={type === "prices" && styles.selected}>Prices</button>
-          <button className={type === "market_caps" && styles.selected}>Market Caps</button>
-          <button className={type === "total_volumes" && styles.selected}>Total Volumes</button>
+          <button className={type === "prices" ? styles.selected : null}>Prices</button>
+          <button className={type === "market_caps" ? styles.selected : null}>Market Caps</button>
+          <button className={type === "total_volumes" ? styles.selected : null}>Total Volumes</button>
         </div>
         <div className={styles.details}>
           <div>
